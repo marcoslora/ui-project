@@ -11,13 +11,24 @@
         </tr>
       </thead>
       <tbody>
-        <!-- row 1 -->
-
-        <tr v-for="(project, index) in projectsStore.projectList" :key="project.id" class="hover">
-          <th>{{ index + 1 }}</th>
-          <td>{{ project.name }}</td>
-          <td>{{ project.tasks.length }}</td>
-          <td><progress class="progress progress-primary w-56" value="40" max="100"></progress></td>
+        <tr
+          v-for="(project, index) in projectsStore.projectsWithCompletion"
+          :key="project.id"
+          class="hover"
+        >
+          <RouterLink :to="`/project/${project.id}`" class="contents">
+            <th>{{ index + 1 }}</th>
+            <td>{{ project.name }}</td>
+            <td>{{ project.taskCount }}</td>
+            <td>
+              <progress
+                class="progress progress-primary w-56"
+                :value="project.completion"
+                max="100"
+              ></progress>
+              {{ project.completion }}%
+            </td>
+          </RouterLink>
         </tr>
       </tbody>
     </table>
@@ -40,7 +51,6 @@
     <ModalIcon />
   </fab-button>
   <fab-button @click="modalOpen = true"> <AddCircle /> </fab-button>
-
   <input-modal
     :open="modalOpen"
     @close="modalOpen = false"
@@ -50,6 +60,7 @@
     subTitle="Ingrese el nombre del proyecto"
   />
 </template>
+
 <script lang="ts" setup>
 import FabButton from '@/modules/common/components/FabButton.vue';
 import AddCircle from '@/modules/common/icons/AddCircle.vue';

@@ -6,5 +6,5 @@ export interface Project {
 export interface Task {
   id: string;
   name: string;
-  completeAt?: Date;
+  completedAt?: Date;
 }
