@@ -40,7 +40,7 @@
     <template #body>
       <p>Parrafo de prueba para este componente</p>
     </template>
-    <template #actions>
+    <template #footer>
       <div class="flex justify-end">
         <button @click="customModalOpen = false" class="btn mr-4">Close</button>
         <button @click="customModalOpen = false" class="btn btn-primary">Open</button>
