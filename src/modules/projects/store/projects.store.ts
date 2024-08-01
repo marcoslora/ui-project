@@ -55,7 +55,7 @@ export const useProjectsStore = defineStore('projects', () => {
 
   return {
     // Properties
-    // projects,
+    projects,
     // Getters o computed
     projectList: computed(() => [...projects.value]),
     noProjects: computed(() => projects.value.length === 0),

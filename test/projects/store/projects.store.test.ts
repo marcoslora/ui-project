@@ -97,6 +97,7 @@ describe('useProjectsStore', () => {
 
   test('should return the projects with completion', () => {
     const store = useProjectsStore();
+
     store.$patch((state) => {
       state.projects = fakeProjects;
     });
